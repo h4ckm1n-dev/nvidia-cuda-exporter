@@ -1,0 +1,23 @@
+{
+    "extends": ["config:base"],
+    "packageRules": [
+      {
+        "matchDatasources": ["docker"],
+        "matchUpdateTypes": ["major", "minor", "patch"],
+        "matchManagers": ["dockerfile"],
+        "dependencyDashboard": true
+      },
+      {
+        "matchManagers": ["pip"],
+        "matchPackagePatterns": ["*"],
+        "dependencyDashboard": true
+      }
+    ],
+    "docker": {
+      "fileMatch": ["Dockerfile"]
+    },
+    "python": {
+      "fileMatch": ["requirements\\.txt$"]
+    }
+  }
+  
