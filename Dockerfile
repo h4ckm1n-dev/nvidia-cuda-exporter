@@ -17,10 +17,12 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Upgrade pip in the virtual environment
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
 
-# Install PyNVML and prometheus_client within the virtual environment
-RUN pip install nvidia-ml-py3 prometheus_client
+# Copy the requirements.txt file into the container
+COPY requirements.txt /app/
+
+# Install dependencies
+RUN pip install -r requirements.txt
 
 # Make sure the appuser owns the application directory
 RUN useradd -m appuser && chown -R appuser /app
