@@ -26,9 +26,15 @@ The Dockerfile sets up a Docker image for running a Python application that util
 To use the Docker image:
 
 1. Clone or download the repository containing the Dockerfile and other necessary files.
-2. Build the Docker image: `docker build -t nvidia-cuda-exporter .`
-3. Run a Docker container based on the image: `ocker run --name nvidia-cuda-exporter --gpus all -p 8888:8888 -v /usr/local/nvidia:/usr/local/nvidia nvidia-cuda-exporter`
-4. Access the Python application through a web browser or programmatically: `http://localhost:<host-port>`
+2. Build the Docker image:
+```
+docker build -t nvidia-cuda-exporter .
+```
+4. Run a Docker container based on the image:
+```
+docker run --name nvidia-cuda-exporter --gpus all -p 8888:8888 -v /usr/local/nvidia:/usr/local/nvidia nvidia-cuda-exporter
+```
+6. Access the Python application through a web browser or programmatically: `http://localhost:<host-port>`
 
 Replace `<host-port>` with the desired port on your host machine.
 
