@@ -73,7 +73,7 @@ The JSON configuration file defines rules for managing dependencies using renova
     }
   ]
 }
-
+```
 ### Usage
 
 To use the configuration file:
