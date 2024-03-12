@@ -12,8 +12,5 @@
       "matchPackagePatterns": ["*"],
       "dependencyDashboard": true
     }
-  ],
-  "docker": {
-    "fileMatch": ["Dockerfile"]
-  }
+  ]
 }
