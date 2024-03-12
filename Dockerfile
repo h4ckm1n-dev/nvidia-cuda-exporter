@@ -17,7 +17,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Upgrade pip in the virtual environment
 RUN pip install --upgrade pip
-RUN pip install requirements.txt
+RUN pip install -r requirements.txt
 
 # Install PyNVML and prometheus_client within the virtual environment
 RUN pip install nvidia-ml-py3 prometheus_client
