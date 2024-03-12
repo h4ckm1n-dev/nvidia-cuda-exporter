@@ -1,0 +1,2 @@
+prometheus_client==x.y.z
+PyNVML==a.b.c
