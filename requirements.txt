@@ -1,2 +1,2 @@
 prometheus_client==0.20.0
-PyNVML==10.5.0
+PyNVML==11.5.0
