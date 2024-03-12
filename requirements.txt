@@ -1,2 +1,2 @@
-prometheus_client==x.y.z
-PyNVML==a.b.c
+prometheus_client==0.20.0
+PyNVML==10.5.0
