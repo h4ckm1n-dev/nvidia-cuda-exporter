@@ -4,24 +4,24 @@ FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu20.04
 # Set the working directory in the container
 WORKDIR /app
 
-# Install Python, pip, and virtualenv
+# Install Python, pip, and virtualenv with specific versions
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3 \
-    python3-pip \
-    python3-venv \
+    python3=3.8.10-0ubuntu1~20.04 \
+    python3-pip=20.0.2-5ubuntu1.6 \
+    python3-venv=3.8.10-0ubuntu1~20.04 \
  && rm -rf /var/lib/apt/lists/*
 
 # Create a virtual environment and activate it
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Upgrade pip in the virtual environment
-RUN pip install --upgrade pip
+# Upgrade pip to a specific version in the virtual environment
+RUN pip install --upgrade pip==21.2.4
 
 # Copy the requirements.txt file into the container
 COPY requirements.txt /app/
 
-# Install dependencies
+# Install dependencies from a requirements file with pip version pinning
 RUN pip install -r requirements.txt
 
 # Make sure the appuser owns the application directory
