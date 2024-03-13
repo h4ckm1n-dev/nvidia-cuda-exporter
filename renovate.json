@@ -13,11 +13,11 @@
     {
       "matchManagers": ["pip_requirements"],
       "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["patch"], // Example for more specific update control
+      "matchUpdateTypes": ["patch"],
       "dependencyDashboard": true,
       "groupName": "pip-minor-patch-updates",
       "groupSlug": "pip-updates",
-      "automerge": true // Example for automerging
+      "automerge": true
     }
   ]
 }
