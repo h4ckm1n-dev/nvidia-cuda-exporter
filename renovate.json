@@ -1,30 +1,44 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "matchPackagePatterns": ["^python3$", "^python3-pip$", "^python3-venv$"],
+      "datasources": ["docker"],
+      "depTypeList": ["dependencies"],
+      "matchManagers": ["dockerfile"],
+      "automerge": false,
+      "groupName": "python dependencies"
+    }
+  ],
   "regexManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "python3=(?<currentValue>\\d+\\.\\d+\\.\\d+-0ubuntu1~20\\.04)"
+        "python3=(?<currentValue>3\\.10\\.6-1~22\\.04)"
       ],
-      "depNameTemplate": "debian_stable/python3",
-      "datasourceTemplate": "repology"
+      "depNameTemplate": "python3",
+      "datasourceTemplate": "repology",
+      "versioningTemplate": "docker"
     },
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "python3-pip=(?<currentValue>\\d+\\.\\d+\\.\\d+-5ubuntu1\\.\\d+)"
+        "python3-pip=(?<currentValue>22\\.0\\.2\\+dfsg-1ubuntu0\\.4)"
       ],
-      "depNameTemplate": "debian_stable/python-pip",
-      "datasourceTemplate": "repology"
+      "depNameTemplate": "python3-pip",
+      "datasourceTemplate": "repology",
+      "versioningTemplate": "docker"
     },
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "python3-venv=(?<currentValue>\\d+\\.\\d+\\.\\d+-0ubuntu1~20\\.04)"
+        "python3-venv=(?<currentValue>3\\.10\\.6-1~22\\.04)"
       ],
-      "depNameTemplate": "debian_stable/python3-venv",
-      "datasourceTemplate": "repology"
+      "depNameTemplate": "python3-venv",
+      "datasourceTemplate": "repology",
+      "versioningTemplate": "docker"
     }
   ]
 }
