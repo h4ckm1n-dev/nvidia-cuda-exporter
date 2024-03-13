@@ -1,29 +1,19 @@
-"regexManagers": [
-  {
-    "fileMatch": ["^Dockerfile$"],
-    "matchStrings": [
-      "python3=(?<currentValue>3\\.8\\.2-0ubuntu2~20\\.04)"
-    ],
-    "depNameTemplate": "python3",
-    "datasourceTemplate": "repology",
-    "versioningTemplate": "docker"
-  },
-  {
-    "fileMatch": ["^Dockerfile$"],
-    "matchStrings": [
-      "python3-pip=(?<currentValue>20\\.0\\.2-5ubuntu1\\.10)"
-    ],
-    "depNameTemplate": "python3-pip",
-    "datasourceTemplate": "repology",
-    "versioningTemplate": "docker"
-  },
-  {
-    "fileMatch": ["^Dockerfile$"],
-    "matchStrings": [
-      "python3-venv=(?<currentValue>3\\.8\\.2-0ubuntu2)"
-    ],
-    "depNameTemplate": "python3-venv",
-    "datasourceTemplate": "repology",
-    "versioningTemplate": "docker"
-  }
-]
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "matchManagers": ["dockerfile"],
+      "dependencyDashboard": true
+    },
+    {
+      "matchManagers": ["pip_requirements"],
+      "matchPackagePatterns": ["*"],
+      "dependencyDashboard": true
+    }
+  ]
+}
