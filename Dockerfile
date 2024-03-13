@@ -6,9 +6,9 @@ WORKDIR /app
 
 # Install Python, pip, and virtualenv with specific versions
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3=3.8.10-0ubuntu1~20.04 \
-    python3-pip=20.0.2-5ubuntu1.6 \
-    python3-venv=3.8.10-0ubuntu1~20.04 \
+    python3=3.10.6-1~22.04 \
+    python3-pip=22.0.2+dfsg-1ubuntu0.4 \
+    python3-venv=3.10.6-1~22.04 \
  && rm -rf /var/lib/apt/lists/*
 
 # Create a virtual environment and activate it
