@@ -1,7 +1,7 @@
 # NVIDIA-CUDA-EXPORTER
 ![Capture d’écran du 2024-03-13 00-32-20](https://github.com/h4ckm1n-dev/nvidia-cuda-exporter/assets/97511408/862cdf48-c1c5-42e5-bb77-f2f683e88159)
 
-[Repository](https://github.com/h4ckm1n-dev/nvidia-cuda-exporter.git)
+[Github Page Link](https://github.com/h4ckm1n-dev/nvidia-cuda-exporter.git)
 ## Overview
 
 This README provides comprehensive information about the project, including its purpose, usage instructions, and configuration details.
