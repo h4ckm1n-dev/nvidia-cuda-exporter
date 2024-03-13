@@ -7,24 +7,24 @@
       "matchStrings": [
         "python3=(?<currentValue>\\d+\\.\\d+\\.\\d+-0ubuntu1~20\\.04)"
       ],
-      "depNameTemplate": "ubuntu:python3",
-      "datasourceTemplate": "docker"
+      "depNameTemplate": "debian_stable/python3",
+      "datasourceTemplate": "repology"
     },
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
         "python3-pip=(?<currentValue>\\d+\\.\\d+\\.\\d+-5ubuntu1\\.\\d+)"
       ],
-      "depNameTemplate": "ubuntu:python3-pip",
-      "datasourceTemplate": "docker"
+      "depNameTemplate": "debian_stable/python-pip",
+      "datasourceTemplate": "repology"
     },
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
         "python3-venv=(?<currentValue>\\d+\\.\\d+\\.\\d+-0ubuntu1~20\\.04)"
       ],
-      "depNameTemplate": "ubuntu:python3-venv",
-      "datasourceTemplate": "docker"
+      "depNameTemplate": "debian_stable/python3-venv",
+      "datasourceTemplate": "repology"
     }
   ]
 }
