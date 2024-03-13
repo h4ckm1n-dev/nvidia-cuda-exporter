@@ -1,5 +1,5 @@
 # Start from the NVIDIA CUDA image with Python support
-FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu20.04
+FROM nvidia/cuda:12.3.0-cudnn9-runtime-ubuntu20.04
 
 # Set the working directory in the container
 WORKDIR /app
