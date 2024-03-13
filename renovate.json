@@ -1,23 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "packageRules": [
+  "extends": ["config:base"],
+  "regexManagers": [
     {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major", "minor", "patch"],
-      "matchManagers": ["dockerfile"],
-      "dependencyDashboard": true
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "python3=(?<currentValue>\\d+\\.\\d+\\.\\d+-0ubuntu1~20\\.04)"
+      ],
+      "depNameTemplate": "ubuntu:python3",
+      "datasourceTemplate": "docker"
     },
     {
-      "matchManagers": ["pip_requirements"],
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["patch"],
-      "dependencyDashboard": true,
-      "groupName": "pip-minor-patch-updates",
-      "groupSlug": "pip-updates",
-      "automerge": true
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "python3-pip=(?<currentValue>\\d+\\.\\d+\\.\\d+-5ubuntu1\\.\\d+)"
+      ],
+      "depNameTemplate": "ubuntu:python3-pip",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "python3-venv=(?<currentValue>\\d+\\.\\d+\\.\\d+-0ubuntu1~20\\.04)"
+      ],
+      "depNameTemplate": "ubuntu:python3-venv",
+      "datasourceTemplate": "docker"
     }
   ]
 }
