@@ -37,7 +37,7 @@ gpu_pcie_tx = Gauge('gpu_pcie_tx_mb', 'GPU PCIe transmission speed in MB/s', ['g
 gpu_pcie_rx = Gauge('gpu_pcie_rx_mb', 'GPU PCIe receive speed in MB/s', ['gpu_index', 'gpu_name'])
 gpu_power_limit = Gauge('gpu_power_limit_watts', 'GPU power limit in watts', ['gpu_index', 'gpu_name'])
 gpu_power_draw = Gauge('gpu_power_draw_watts', 'GPU power draw in watts', ['gpu_index', 'gpu_name'])
-gpu_power_usage = Gauge('gpu_power_usage_percent', 'GPU power usage percentage of the power limit', ['gpu_index', 'gpu_name'])
+gpu_power_usage_percent = Gauge('gpu_power_usage_percent', 'GPU power usage percentage of the power limit', ['gpu_index', 'gpu_name'])
 gpu_encoder_utilization = Gauge('gpu_encoder_utilization_percent', 'GPU encoder utilization in percent', ['gpu_index', 'gpu_name'])
 gpu_decoder_utilization = Gauge('gpu_decoder_utilization_percent', 'GPU decoder utilization in percent', ['gpu_index', 'gpu_name'])
 gpu_compute_mode = Gauge('gpu_compute_mode', 'GPU compute mode', ['gpu_index', 'gpu_name'])
@@ -46,7 +46,7 @@ def collect_gpu_metrics():
     device_count = pynvml.nvmlDeviceGetCount()
     for i in range(device_count):
         handle = pynvml.nvmlDeviceGetHandleByIndex(i)
-        gpu_name = pynvml.nvmlDeviceGetName(handle)
+        gpu_name = pynvml.nvmlDeviceGetName(handle).decode('utf-8')
         memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
         utilization = pynvml.nvmlDeviceGetUtilizationRates(handle)
         temperature = pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
@@ -99,7 +99,7 @@ def collect_gpu_metrics():
         power_draw = pynvml.nvmlDeviceGetPowerUsage(handle)
         gpu_power_draw.labels(**labels).set(power_draw)
         power_usage = (power_draw / power_limit) * 100.0  # percentage of power limit used
-        gpu_power_usage.labels(**labels).set(power_usage)
+        gpu_power_usage_percent.labels(**labels).set(power_usage)
 
 if __name__ == '__main__':
     # Start up the server to expose the metrics.
