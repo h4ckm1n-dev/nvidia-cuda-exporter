@@ -46,7 +46,7 @@ def collect_gpu_metrics():
     device_count = pynvml.nvmlDeviceGetCount()
     for i in range(device_count):
         handle = pynvml.nvmlDeviceGetHandleByIndex(i)
-        gpu_name = pynvml.nvmlDeviceGetName(handle).decode('utf-8')
+        gpu_name = pynvml.nvmlDeviceGetName(handle)
         memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
         utilization = pynvml.nvmlDeviceGetUtilizationRates(handle)
         temperature = pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
