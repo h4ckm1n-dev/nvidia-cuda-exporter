@@ -1,34 +1,41 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
-  "dependencyDashboard": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
   "packageRules": [
     {
-      "datasources": ["docker"],
-      "matchManagers": ["dockerfile"],
-      "dependencyDashboard": true,
-      "rangeStrategy": "pin",
-      "groupName": "docker images"
+      "groupName": "all patch dependencies",
+      "groupSlug": "all-patch",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "automerge": true,
+      "automergeSchedule": [
+        "after 10pm every weekday", 
+        "before 5am every weekday"
+      ]
     },
     {
-      "datasources": ["pypi"],
-      "matchManagers": ["pip_requirements"],
-      "dependencyDashboard": true,
-      "rangeStrategy": "pin",
-      "groupName": "python packages"
-    },
-    {
-      "datasources": ["apt"],
-      "matchManagers": ["dockerfile"],
-      "dependencyDashboard": true,
-      "rangeStrategy": "pin",
-      "groupName": "apt packages",
-      "packageRules": [
-        {
-          "matchPackagePatterns": ["^python3", "^python3-pip", "^python3-venv"]
-        }
+      "groupName": "all minor dependencies",
+      "groupSlug": "all-minors",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "automerge": true,
+      "automergeSchedule": [
+        "after 10pm every weekday",
+        "before 5am every weekday"
       ]
     }
   ]
