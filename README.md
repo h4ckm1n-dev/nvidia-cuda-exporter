@@ -57,39 +57,3 @@ To use the script:
 3. Run the script: `python gpu_metrics_collector.py`
 
 Access the metrics at `http://localhost:8888/metrics`.
-
-## Dependency Management Configuration
-
-### JSON Configuration File
-
-The JSON configuration file defines rules for managing dependencies using renovate management tool. It specifies how updates to Dockerfile dependencies and pip requirements should be handled.
-
-```json
-{
-  "extends": ["config:base"],
-  "packageRules": [
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major", "minor", "patch"],
-      "matchManagers": ["dockerfile"],
-      "dependencyDashboard": true
-    },
-    {
-      "matchManagers": ["pip_requirements"],
-      "matchPackagePatterns": ["*"],
-      "dependencyDashboard": true
-    }
-  ]
-}
-```
-### Usage
-
-To use the configuration file:
-
-Copy the provided JSON configuration into a file named dependency-management.json or any other appropriate name.
-Place the configuration file in the root directory of your project.
-Configure your dependency management tool to use this configuration file for managing dependencies.
-For further details on how to configure and use the dependency management tool with this configuration file, refer to the documentation of the specific tool being used.
-
-Additional Information
-For any further information or issues, please consult the documentation of the respective components or tools used in the project.
